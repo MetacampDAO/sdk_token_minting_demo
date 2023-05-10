@@ -34,7 +34,13 @@ async function createTokenAccount(
     connection,
     payer,
     mint,
-    owner
+    owner,
+    undefined,
+    "confirmed",
+    {
+      commitment: "confirmed",
+      preflightCommitment: "confirmed",
+    }
   );
 
   console.log(
@@ -58,7 +64,12 @@ async function mintTokens(
     mint,
     destination,
     authority,
-    amount
+    amount,
+    undefined,
+    {
+      commitment: "confirmed",
+      preflightCommitment: "confirmed",
+    }
   );
 
   console.log(
@@ -80,7 +91,12 @@ async function approveDelegate(
     account,
     delegate,
     owner,
-    amount
+    amount,
+    undefined,
+    {
+      commitment: "confirmed",
+      preflightCommitment: "confirmed",
+    }
   );
 
   console.log(
@@ -98,7 +114,12 @@ async function revokeDelegate(
     connection,
     payer,
     account,
-    owner
+    owner,
+    undefined,
+    {
+      commitment: "confirmed",
+      preflightCommitment: "confirmed",
+    }
   );
 
   console.log(
@@ -120,7 +141,12 @@ async function transferTokens(
     source,
     destination,
     owner,
-    amount
+    amount,
+    undefined,
+    {
+      commitment: "confirmed",
+      preflightCommitment: "confirmed",
+    }
   );
 
   console.log(
@@ -142,7 +168,12 @@ async function burnTokens(
     account,
     mint,
     owner,
-    amount
+    amount,
+    undefined,
+    {
+      commitment: "confirmed",
+      preflightCommitment: "confirmed",
+    }
   );
 
   console.log(
@@ -167,7 +198,7 @@ async function main() {
   );
 
   // GET MINT ACCOUNT
-  const mintInfo = await token.getMint(connection, mint);
+  const mintInfo = await token.getMint(connection, mint, "confirmed");
 
   // CREATE TOKEN ACCOUNT 1
   const tokenAccount = await createTokenAccount(
